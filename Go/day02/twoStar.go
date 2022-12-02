@@ -65,7 +65,7 @@ func calcWin(score int) int {
 }
 
 func getInput() []string {
-	file, err := os.Open("day02/input.txt")
+	file, err := os.Open("Go/day02/input.txt")
 	if err != nil {
 		fmt.Println(err)
 	}

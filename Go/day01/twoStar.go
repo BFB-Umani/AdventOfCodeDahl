@@ -37,7 +37,7 @@ func main() {
 }
 
 func getInput() []string {
-	file, err := os.Open("input.txt")
+	file, err := os.Open("Go/day01/input.txt")
 	if err != nil {
 		fmt.Println(err)
 	}
