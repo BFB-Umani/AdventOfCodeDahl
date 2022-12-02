@@ -7,61 +7,40 @@ import (
 	"strings"
 )
 
+func getLosingScore(choice string) int {
+	losing := map[string]int{"A": 3, "B": 1, "C": 2}
+	return losing[choice]
+}
+
+func getWinningScore(choice string) int {
+	winning := map[string]int{"A": 2, "B": 3, "C": 1}
+	return winning[choice] + 6
+}
+
+func getDrawScore(choice string) int {
+	draw := map[string]int{"A": 1, "B": 2, "C": 3}
+	return draw[choice] + 3
+}
+
 func main() {
+
 	input := getInput()
 
 	var sum int
 
 	for i := 0; i < len(input); i++ {
 		var splitString []string = strings.Split(input[i], " ")
-		var choiceScore int
 
 		switch splitString[1] {
 		case "X":
-			switch splitString[0] {
-			case "A":
-				choiceScore = 3
-			case "B":
-				choiceScore = 1
-			case "C":
-				choiceScore = 2
-			}
-			sum += calcLose(choiceScore)
+			sum += getLosingScore(splitString[0])
 		case "Y":
-			switch splitString[0] {
-			case "A":
-				choiceScore = 1
-			case "B":
-				choiceScore = 2
-			case "C":
-				choiceScore = 3
-			}
-			sum += calcDraw(choiceScore)
+			sum += getDrawScore(splitString[0])
 		case "Z":
-			switch splitString[0] {
-			case "A":
-				choiceScore = 2
-			case "B":
-				choiceScore = 3
-			case "C":
-				choiceScore = 1
-			}
-			sum += calcWin(choiceScore)
+			sum += getWinningScore(splitString[0])
 		}
 	}
 	fmt.Println(sum)
-}
-
-func calcLose(score int) int {
-	return score + 0
-}
-
-func calcDraw(score int) int {
-	return score + 3
-}
-
-func calcWin(score int) int {
-	return score + 6
 }
 
 func getInput() []string {
