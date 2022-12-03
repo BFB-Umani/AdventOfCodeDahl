@@ -1,0 +1,15 @@
+A = X ROCK
+B = Y PAPER
+C = Z SCISSORS
+
+X = 1
+Y = 2
+Z = 3
+
+WIn = 6 
+DDRaw = 3
+Lose = 0
+
+X = LOOSE
+Y = DRAW
+Z = WIN
