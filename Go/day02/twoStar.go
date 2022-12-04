@@ -7,37 +7,24 @@ import (
 	"strings"
 )
 
-func getLosingScore(choice string) int {
-	losing := map[string]int{"A": 3, "B": 1, "C": 2}
-	return losing[choice]
-}
-
-func getWinningScore(choice string) int {
-	winning := map[string]int{"A": 2, "B": 3, "C": 1}
-	return winning[choice] + 6
-}
-
-func getDrawScore(choice string) int {
-	draw := map[string]int{"A": 1, "B": 2, "C": 3}
-	return draw[choice] + 3
-}
+var losing = map[string]int{"A": 3, "B": 1, "C": 2}
+var winning = map[string]int{"A": 2, "B": 3, "C": 1}
+var draw = map[string]int{"A": 1, "B": 2, "C": 3}
 
 func main() {
 
 	input := getInput()
-
 	var sum int
 
 	for i := 0; i < len(input); i++ {
 		var splitString []string = strings.Split(input[i], " ")
-
 		switch splitString[1] {
 		case "X":
-			sum += getLosingScore(splitString[0])
+			sum += losing[splitString[0]]
 		case "Y":
-			sum += getDrawScore(splitString[0])
+			sum += draw[splitString[0]] + 3
 		case "Z":
-			sum += getWinningScore(splitString[0])
+			sum += winning[splitString[0]] + 6
 		}
 	}
 	fmt.Println(sum)
